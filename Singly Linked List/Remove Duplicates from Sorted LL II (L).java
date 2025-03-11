@@ -13,15 +13,25 @@ class Solution {
         if(head==null || head.next==null){
             return head;
         }
-        ListNode temp = head;
-        while(temp.next!=null){
-            if(temp.val!=temp.next.val){
-                break;
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr!=null && curr.next!=null){
+            if(curr.val==curr.next.val){
+                while(curr.next!=null && curr.val==curr.next.val){
+                    curr = curr.next;
+                }
+                if(prev==null){
+                    curr = curr.next;
+                    head = curr;
+                }else{
+                    prev.next = curr.next;
+                    curr = curr.next;
+                }
+            }else{
+                prev = curr;
+                curr = curr.next;
             }
-            temp.next = temp.next.next;
-            temp = temp.next;
         }
-        head = temp;
         return head;
     }
 }
