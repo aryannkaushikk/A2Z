@@ -1,3 +1,9 @@
+// Same algorithm of Moore's Voting Algo.
+// Just el1 at 0 and el2 next to it in beginning
+// el1 and el2 decreases if current element not equal to both.
+// But el1 or el2 is replaced only when their count is 0 and current element is not equal to either el1 or el2 whoever is not 0 in count.
+// Lastly do check for both's count in whole array.
+
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
         int e1 = 0;
