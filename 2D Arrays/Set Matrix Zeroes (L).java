@@ -1,3 +1,7 @@
+// Create separate arrays for rows and columns and store 1 at index where (row,column) is 0 in row and col array respectively.
+// Then iterate again and if row index of current element is 1 in row array or same for column, set element to 0.
+// There is another approach that uses first row and column of matrix only to save space.
+
 class Solution {
     public void setZeroes(int[][] matrix) {
         int m = matrix.length;
