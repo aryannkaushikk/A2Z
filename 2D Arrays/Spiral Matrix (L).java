@@ -1,3 +1,5 @@
+// Set rows limits and cols limits and then iterate in rows then columns then rows then columns and keep reducing max limits and increasing min limits.
+
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> list = new ArrayList<>();
