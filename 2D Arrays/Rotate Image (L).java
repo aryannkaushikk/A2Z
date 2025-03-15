@@ -1,3 +1,7 @@
+// Reverse Element in each column order.
+// Then swap (i,j) value with (j,i) value.
+// The second one gives you transpose of a matrix but since its rotating the column reversal is also required before it.
+
 class Solution {
     public void rotate(int[][] matrix) {
         int m = matrix.length;
