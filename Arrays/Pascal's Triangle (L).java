@@ -1,4 +1,10 @@
 // Another approach is nCr based
+// But I have used list and since first list is 1 and second is 1,1. I start if numRows>=3 is required.
+// I use pointer and point left at starting of previous list and till we iterate full size of last list.
+// Store left+1 in right. 
+// Store left+right in the current row list.
+// Put right in left.
+// Repeat till loop ends and at end put new list in Nested List.
 
 class Solution {
     public List<List<Integer>> generate(int numRows) {
