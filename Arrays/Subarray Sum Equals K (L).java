@@ -1,3 +1,8 @@
+// Prefix Sum used.
+// In the hashMap we are storing sum, count of sum occurred.
+// Everytime you encounter a sum that is equal to an existing sum you increase the value of the key(sum).
+// And then everytime you use the value you add its value not +1 to count.
+
 class Solution {
     public int subarraySum(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
