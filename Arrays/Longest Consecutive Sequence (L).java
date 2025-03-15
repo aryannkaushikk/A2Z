@@ -1,3 +1,10 @@
+// Approach 1
+
+// You will store each element in a HashSet to maintain no duplicacy.
+// Then you will iterate again and for each element if there exists a value lesser than it (el-1) then continue,
+// else the element is a starting point then you will check till how many elements ahead does the set has values from initial point and count them. 
+// Store them in a max value after compare, return max in end.
+
 class Solution {
     public int longestConsecutive(int[] nums) {
         if(nums.length==0){
@@ -22,6 +29,10 @@ class Solution {
             }
         }
         return max;
+
+// Approach 2
+
+// Sort the array and see till how many elements you get el+1==next element
         
         // Arrays.sort(nums);
         // int count = 1;
