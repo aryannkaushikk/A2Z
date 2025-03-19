@@ -8,11 +8,15 @@ class Solution {
         }
         int mid = (low+high)/2;
         int sqr = mid*mid;
-        if(sqr<=n){
+        if(sqr==n){
+            return mid;
+        }
+        else if(sqr>n){
+            return sqrt(n,ans,low,mid-1); 
+        }else{
             ans[0] = Math.max(ans[0],mid);
             return sqrt(n,ans,mid+1,high);
         }
-        return sqrt(n,ans,low,mid-1);
     }
     
     int floorSqrt(int n) {
@@ -20,3 +24,4 @@ class Solution {
         return sqrt(n,ans,0,n);
     }
 }
+
