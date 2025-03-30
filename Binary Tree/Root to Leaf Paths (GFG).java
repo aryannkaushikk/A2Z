@@ -1,53 +1,35 @@
-/*
-
-Definition for Binary Tree Node
-class Node
-{
-    int data;
-    Node left;
-    Node right;
-
-    Node(int data)
-    {
-        this.data = data;
-        left = null;
-        right = null;
-    }
-}
-*/
+Simple PreOrder Traversal You add node to list then go left and right and then remove that node
+Whenever a leaf node is encountered add it and add the list to nested list as new list
 
 class Solution {
-    private static ArrayList<ArrayList<Integer>> res;
     
-    private static boolean isLeaf(Node node){
-        return node.left == null && node.right == null;
+    public static boolean isLeaf(Node root){
+        if(root.left==null && root.right==null){
+            return true;
+        }
+        return false;
     }
     
-    private static void rootToNode(Node root, ArrayList<Integer> list){
+    public static void inOrder(Node root, ArrayList<Integer> list, ArrayList<ArrayList<Integer>> ans){
         if(root==null){
             return;
         }
         if(isLeaf(root)){
             list.add(root.data);
-            res.add(list);
+            ans.add(new ArrayList<>(list));
+            list.remove(list.size()-1);
             return;
         }
-        ArrayList<Integer> l1 = new ArrayList<>();
-        ArrayList<Integer> l2 = new ArrayList<>();
-        l1.addAll(list);
-        l2.addAll(list);
-        l1.add(root.data);
-        l2.add(root.data);
-        rootToNode(root.left,l1);
-        rootToNode(root.right,l2);
+        list.add(root.data);
+        inOrder(root.left,list,ans);
+        inOrder(root.right,list,ans);
+        list.remove(list.size()-1);
     }
-
+    
     public static ArrayList<ArrayList<Integer>> Paths(Node root) {
-        if(root==null){
-            return null;
-        }
-        res = new ArrayList<>();
-        rootToNode(root,new ArrayList<>());
-        return res;
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        inOrder(root,list, ans);
+        return ans;
     }
 }
