@@ -1,3 +1,8 @@
+Each root calls the func for its left and right
+And then returns max of (l,r) + 1 
+Recursively reach the leaf node they return height 1 and then its parent get height of its l and r. Whichever is higher in value plus 1 is then new height this node returns.
+This goes on till root
+    
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -15,27 +20,13 @@
  */
 class Solution {
 
-    private static int maxx;
-
-    private static int maxH(TreeNode root){
-        if(root==null){
-            return 0;
-        }
-        int l = maxH(root.left);
-        int r = maxH(root.right);
-
-        maxx = Math.max(maxx,l+1);
-        maxx = Math.max(maxx,r+1);
-
-        return 1+Math.max(l,r);
-    }
-
     public int maxDepth(TreeNode root) {
         if(root==null){
             return 0;
         }
-        maxx = Integer.MIN_VALUE;
-        maxH(root);
-        return maxx;
+        int l = maxDepth(root.left);
+        int r = maxDepth(root.right);
+
+        return 1+Math.max(l,r);
     }
 }
