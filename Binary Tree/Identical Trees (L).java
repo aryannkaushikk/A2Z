@@ -1,3 +1,5 @@
+Trees must be equal structurally and have same values
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
