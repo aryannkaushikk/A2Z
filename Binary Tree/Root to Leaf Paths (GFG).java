@@ -1,6 +1,24 @@
 Simple PreOrder Traversal You add node to list then go left and right and then remove that node
 Whenever a leaf node is encountered add it and add the list to nested list as new list
-// 
+
+/*
+
+Definition for Binary Tree Node
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data)
+    {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+*/
+
 class Solution {
     
     public static boolean isLeaf(Node root){
