@@ -1,3 +1,9 @@
+Level Order Traversal
+Maintaining a number for each child node based on parents index
+Every level starts again with indexing
+You take min index from first element of queue in that level
+and keep subtracting and finding max width till end
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
