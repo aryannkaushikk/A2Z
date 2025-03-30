@@ -1,3 +1,9 @@
+Call func for left and right which returns height of left and right
+Then compare max,l+r for max diameter
+Return max of l,r
+
+Diameter goes through a node whose left height+right height is maximum
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -14,27 +20,22 @@
  * }
  */
 class Solution {
-    
-    private static int maxx;
 
-    private static int diameter(TreeNode root){
+    public static int getDiameter(TreeNode root, int[] max){
         if(root==null){
             return 0;
         }
-        int l = diameter(root.left);
-        int r = diameter(root.right);
-        
-        maxx = Math.max(maxx,l+r+1);
+        int l = getDiameter(root.left,max);
+        int r = getDiameter(root.right,max);
+
+        max[0] = Math.max(max[0],l+r);
 
         return 1+Math.max(l,r);
     }
-    
+
     public int diameterOfBinaryTree(TreeNode root) {
-        if(root==null){
-            return 0;
-        }
-        maxx = Integer.MIN_VALUE;
-        diameter(root);
-        return maxx-1;
+        int[] max = {0};
+        getDiameter(root,max);
+        return max[0];
     }
 }
