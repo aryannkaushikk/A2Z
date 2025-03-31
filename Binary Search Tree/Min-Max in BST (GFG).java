@@ -1,4 +1,5 @@
-
+Left-Most element is Min
+Right-Most element is Max
 /*
 class Node {
     int data;
