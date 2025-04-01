@@ -1,3 +1,6 @@
+Create Mapping in a nested TreeMap as follows : X:[L:{PQ}]
+Then iterate for each X and each L in it
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
