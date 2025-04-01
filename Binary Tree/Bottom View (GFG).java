@@ -1,51 +1,46 @@
+Level order traversal and keep re-writing map for every x
+
 class Solution
 {
     //Function to return a list containing the bottom view of the given tree.
     
-    private static class Tuple{
-        Node n;
+    static class Pair{
+        Node node;
         int x;
-        int l;
-
-        public Tuple(Node n, int x, int l){
-            this.n = n;
-            this.l = l;
+        
+        public Pair(Node node, int x){
+            this.node = node;
             this.x = x;
         }
     }
-
-    private static TreeMap<Integer,TreeMap<Integer,Integer>> mapping(Node root){
-        TreeMap<Integer,TreeMap<Integer, Integer>> map = new TreeMap<>();
-        Queue<Tuple> q = new LinkedList<>();
-        q.offer(new Tuple(root,0,0));
-        while (!q.isEmpty()){
-            Tuple temp = q.poll();
-            Node n = temp.n;
-            int x = temp.x;
-            int l = temp.l;
-            if(n.left!=null){
-                q.offer(new Tuple(n.left,x-1,l+1));
+    
+    public static void levelOrder(Node root, TreeMap<Integer, Integer> map){
+        Queue<Pair> q = new LinkedList<>();
+        q.offer(new Pair(root,0));
+        while(!q.isEmpty()){
+            Pair p = q.poll();
+            Node node = p.node;
+            int x = p.x;
+            map.put(x,node.data);
+            if(node.left!=null){
+                q.offer(new Pair(node.left,x-1));
             }
-            if(n.right!=null){
-                q.offer(new Tuple(n.right,x+1,l+1));
+            if(node.right!=null){
+                q.offer(new Pair(node.right,x+1));
             }
-            TreeMap<Integer, Integer> tmap = new TreeMap<>();
-            tmap.put(l,n.data);
-            map.put(x,tmap);
         }
-        return map;
     }
+    
     public ArrayList <Integer> bottomView(Node root)
     {
         if(root==null){
             return new ArrayList<>();
         }
-        TreeMap<Integer,TreeMap<Integer, Integer>> map = mapping(root);
         ArrayList<Integer> list = new ArrayList<>();
-        for(Map.Entry<Integer, TreeMap<Integer, Integer>> entry: map.entrySet()){
-            for(Map.Entry<Integer, Integer> entry2 : entry.getValue().entrySet()){
-                list.add(entry2.getValue());
-            }
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        levelOrder(root,map);
+        for(Map.Entry<Integer, Integer> entry: map.entrySet()){
+            list.add(entry.getValue());
         }
         return list;
     }
