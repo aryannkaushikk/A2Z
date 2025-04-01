@@ -1,3 +1,7 @@
+preOrder traversal if given list.size() = level then add
+Root->Left->Right in LeftView
+Root->Right->Left in RightView
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -14,32 +18,21 @@
  * }
  */
 class Solution {
-    public List<Integer> rightSideView(TreeNode root) {
+
+    public static void preOrder(TreeNode root, int level, List<Integer> list){
         if(root==null){
-            return new ArrayList<>();
+            return;
         }
-        List<Integer> list = new ArrayList<>();
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        q.offer(null);
-        list.add(root.val);
-        while(!q.isEmpty()){
-            TreeNode temp = q.poll();
-            if(temp==null){
-                if(q.isEmpty()){
-                    break;
-                }
-                list.add(q.peek().val);
-                q.offer(null);
-                continue;
-            }
-            if(temp.right!=null){
-                q.offer(temp.right);
-            }
-            if(temp.left!=null){
-                q.offer(temp.left);
-            }
+        if(level==list.size()){
+            list.add(root.val);
         }
+        preOrder(root.right,level+1,list);
+        preOrder(root.left,level+1,list);
+    }
+
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> list = new LinkedList<>();
+        preOrder(root,0,list);
         return list;
     }
 }
