@@ -1,3 +1,6 @@
+We iterate the array maintaining a sum and if a sum = sum-k occurred before in array then current sum contains k so we take out length by subtracting sum-k index from current index
+Only put sum if it doesnt exist as we want longest subarray
+
 
 class Solution {
     public int longestSubarray(int[] arr, int k) {
