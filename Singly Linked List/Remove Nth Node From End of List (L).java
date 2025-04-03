@@ -1,3 +1,9 @@
+Slow-Fast pointer based approach
+Move the fast pointer one step at a time for n times
+If fast is null then return head.next as it wants to remove 1st element
+Else move slow from head and fast simultaneously one step at a time till fast.next!=null i.e. fast reaches last element
+Slow will stop at one node before the required node
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -13,29 +19,22 @@ class Solution {
         if(head==null){
             return null;
         }
-        ListNode prev = null;
-        ListNode curr = head;
-        int l = 1;
-        while(curr.next!=null){
-            l++;
-            prev = curr;
-            curr = curr.next;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast!=null && n>0){
+            fast = fast.next;
+            n--;
         }
-        int i = l-n+1;
-        if(i==1){
+        if(fast==null){
             return head.next;
         }
-        if(i==l){
-            prev.next = null;
-            return head;
+        while(fast.next!=null){
+            slow = slow.next;
+            fast = fast.next;
         }
-        prev = null;
-        curr = head;
-        for(int a = 1; a<i; a++){
-            prev = curr;
-            curr = curr.next;
-        }
-        prev.next = prev.next.next;
+        ListNode next = slow.next.next;
+        slow.next.next = null;
+        slow.next = next;
         return head;
     }
 }
