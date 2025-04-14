@@ -44,7 +44,7 @@ class Solution {
         for(int i = 0; i<n; i++){
             int l = i - pse[i];
             int r = nse[i] - i;
-            max = Math.max(max, (l+r-1)*heights[i]);
+            max = Math.max(max, (l+r-1)*heights[i]); //whole l,r could be replaced by nse-pse-1
         }
         return max;
     }
