@@ -1,3 +1,9 @@
+"""
+Approach
+
+In Bottom-Up, just maintain the last and second last fib numbers
+In Top-Down, maintain a DP Array to store already calculated fib numbers
+"""
 class Solution {
     
     static final int MOD = 1000000007;
