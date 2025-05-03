@@ -1,4 +1,14 @@
 """
+Approach
+
+For every element either starting from last or first
+There are two options to calculate max amount till that point from 0
+Either you take current house and the max amount till the house 2 step behind
+Or leave this house and take max amount till the house 1 step behind
+Whichever is greater is the max amount possible to rob till this house
+"""
+
+"""
 Recursion
 """
 
