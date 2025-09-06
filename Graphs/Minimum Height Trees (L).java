@@ -6,6 +6,8 @@ Onion Peeling Method or Diameter->Center Method
 We are eliminating all leaf nodes and making the nodes parent the new leaf nodes till 1 or 2 nodes only are not left
 Because Think of the graph as a circle with roots with MHT at center (that will always be true) and there can be only 1 or 2 of them
 So we eliminate from out to in until we get the center nodes
+
+For that we are using indegree array and push to Q when indegree is 1 (leaf node)
 """
 
 class Solution {
